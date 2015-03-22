@@ -52,19 +52,17 @@
           </div>
 		  
 		  <div data-ng-show="navigator.isActive(1)">
-			  <div data-ng-controller="DisplayController as displayer">
+			<div data-ng-controller="DisplayController as displayer">
 			  <!-- <img src="Resources/uwdbc_vikings_small.png" /> -->
-			  <div class="container">
 				  <div class="row">
 					  <!-- Very static right now, will put into JS later. -->
-					  <div class="col-md-4" data-ng-repeat="display in displayer.displays">
+					  <div class="col-md-6" data-ng-repeat="display in displayer.displays">
 						  <img data-ng-src="{{display.images[0]}}" />
 						  <p class="lead"> {{display.name}} </p>
 						  <em class="pull-left">{{display.description}}</em>
 						  <em class="pull-right">{{display.year}}</em>
 					  </div>
 				  </div>
-			  </div>
 		  	</div>
 		  </div>
 
