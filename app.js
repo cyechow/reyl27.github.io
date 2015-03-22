@@ -40,7 +40,7 @@
 		{
 			id: 0,
 			name: 'Vikings Singlet',
-			description: 'Created for UWDBC Vikings.',
+			description: 'Designed for UWDBC Vikings.',
 			designer: 'Jane Wu',
 			year: '2014',
 			images: [
@@ -50,7 +50,7 @@
 		{
 			id: 1,
 			name: 'PA Singlet',
-			description: 'Created for Paddlers Anonymous.',
+			description: 'Designed for Paddlers Anonymous.',
 			designer: 'Jane Wu',
 			year: '2015',
 			images: [
