@@ -68,6 +68,8 @@ body {
 }
 
 .masthead-nav > li {
+  margin-top: 10px;
+  margin-bottom: 10px;
   display: inline-block;
 }
 .masthead-nav > li + li {
