@@ -1,0 +1,87 @@
+<html>
+    <head>
+        <title>HTML Diff Tool</title>
+        <link rel="stylesheet" type="text/css" href="layout.css">
+        <link rel="stylesheet" type="text/css" href="./bootstrap/dist/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                <h1>HTML Diff Tool</h1>
+            </div>
+            <div class="row">
+                <div class="col-5">
+                    <label>Original:</label>
+                    <textarea id="original" style="width: 100%;" rows="10"></textarea>
+                </div>
+                <div class="col-auto"></div>
+                <div class="col-5">
+                    <label>Updated:</label>
+                    <textarea id="new"style="width: 100%;" rows="10"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-auto">
+                    <button id="btnsubmit" onclick="getdiff()">
+                        Get Difference
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <p>
+                    <label id="status"></label>
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-auto">
+                    <h4>Output</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-auto">
+                    <button onclick="saveoutput()">
+                        Save Output
+                    </button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <p id="output"></p>
+                </div>
+                <div class="col-12">
+                    <textarea id="outputtext" style="width: 100%;" rows="10"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer fixed-bottom">
+            <span class="text-muted">
+                HTML Tool Diff @2020
+            </span>
+        </div>
+
+        <script src="htmldiff.js"></script>
+        <script>
+            function getdiff() {
+                document.getElementById('status').html = 'Button pressed.'
+                let originalText = document.getElementById('original').value
+                let newText = document.getElementById('new').value
+
+                let output = htmldiff(originalText, newText);
+
+                if (output.includes('<ins>') || output.includes('<del>'))
+                {
+                    document.getElementById('outputtext').value = output
+
+                    document.getElementById('output').innerHTML = output
+                }
+                else{
+                    document.getElementById('output').innerHTML = "<p>No differences detected.</p>"
+                }
+            }
+            function saveoutput() {
+                let output = document.getElementById('output').innerHTML
+            }
+        </script>
+    </body>
+</html>
