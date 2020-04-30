@@ -81,6 +81,9 @@
             }
             function saveoutput() {
                 let output = document.getElementById('output').innerHTML
+                var file = new Blob([output], {type: "text/plain"});
+                a.href = URL.createObjectURL(file);
+                a.download = "diff.html";
             }
         </script>
     </body>
