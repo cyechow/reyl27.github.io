@@ -39,9 +39,11 @@
             </div>
             <div class="row">
                 <div class="col-auto">
-                    <button onclick="saveoutput()">
-                        Save Output
-                    </button>
+                    <a href="" id="save">
+                        <button onclick="saveoutput()">
+                            Save Output
+                        </button>
+                    </a>
                 </div>
             </div>
             <div class="row">
@@ -82,8 +84,8 @@
             function saveoutput() {
                 let output = document.getElementById('output').innerHTML
                 var file = new Blob([output], {type: "text/plain"});
-                a.href = URL.createObjectURL(file);
-                a.download = "diff.html";
+                save.href = URL.createObjectURL(file);
+                save.download = "diff.html";
             }
         </script>
     </body>
