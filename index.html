@@ -1,29 +1,47 @@
 <html>
     <head>
-        <title>HTML Diff Tool</title>
-        <link rel="stylesheet" type="text/css" href="layout.css">
+        <title>HTML/XML Diff Tool</title>
+
+        <!-- Bootstrap core CSS -->
         <link rel="stylesheet" type="text/css" href="./bootstrap/dist/css/bootstrap.min.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" type="text/css" href="layout.css">
     </head>
-    <body>
-        <div class="container">
-            <div class="row">
-                <h1>HTML Diff Tool</h1>
+    <body style="margin-bottom: 60px;">
+        <main role="main" class="container">
+            <div class="page-header">
+                <h1>HTML/XML Diff Tool</h1>
             </div>
             <div class="row">
-                <div class="col-5">
+                <div class="col-6">
+                    <label>Original Directory Path:</label>
+                    <input id="original_path" style="width: 100%;">
+                </div>
+                <div class="col-6">
+                    <label>New Directory Path:</label>
+                    <input id="new_path" style="width: 100%;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
                     <label>Original:</label>
                     <textarea id="original" style="width: 100%;" rows="10"></textarea>
                 </div>
-                <div class="col-auto"></div>
-                <div class="col-5">
+                <div class="col-6">
                     <label>Updated:</label>
                     <textarea id="new"style="width: 100%;" rows="10"></textarea>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-auto">
-                    <button id="btnsubmit" onclick="getdiff()">
-                        Get Difference
+            <div class="row" style="margin-top: 10px;">
+                <div class="col-2">
+                    <button id="btnsubmit">
+                        Get Differences
+                    </button>
+                </div>
+                <div class="col-2">
+                    <button id="btnrun">
+                        Run
                     </button>
                 </div>
             </div>
@@ -37,10 +55,10 @@
                     <h4>Output</h4>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
                 <div class="col-auto">
                     <a href="" id="save">
-                        <button onclick="saveoutput()">
+                        <button id="btnsave">
                             Save Output
                         </button>
                     </a>
@@ -48,45 +66,26 @@
             </div>
             <div class="row">
                 <div class="col-12">
-                    <p id="output"></p>
-                </div>
-                <div class="col-12">
                     <textarea id="outputtext" style="width: 100%;" rows="10"></textarea>
                 </div>
             </div>
-        </div>
+            <div class="row" style="margin-top: 10px; margin-bottom: 10px;">
+                <div class="col-12">
+                    <p id="output"></p>
+                </div>
+            </div>
+        </main>
 
-        <div class="footer fixed-bottom">
-            <span class="text-muted">
-                HTML Tool Diff @2020
-            </span>
-        </div>
+        <footer class="fixed-bottom" style="background-color: black; height: 60px; width: 100%; line-height: 60px; color: white;">
+            <div class="container">
+                <span class="text-muted">
+                    HTML Tool Diff @2020
+                </span>
+            </div>
+        </footer>
 
+        <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
         <script src="htmldiff.js"></script>
-        <script>
-            function getdiff() {
-                document.getElementById('status').html = 'Button pressed.'
-                let originalText = document.getElementById('original').value
-                let newText = document.getElementById('new').value
-
-                let output = htmldiff(originalText, newText);
-
-                if (output.includes('<ins>') || output.includes('<del>'))
-                {
-                    document.getElementById('outputtext').value = output
-
-                    document.getElementById('output').innerHTML = output
-                }
-                else{
-                    document.getElementById('output').innerHTML = "<p>No differences detected.</p>"
-                }
-            }
-            function saveoutput() {
-                let output = document.getElementById('output').innerHTML
-                var file = new Blob([output], {type: "text/plain"});
-                save.href = URL.createObjectURL(file);
-                save.download = "diff.html";
-            }
-        </script>
+        <script src="index.js"></script>
     </body>
 </html>
