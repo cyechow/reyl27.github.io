@@ -25,8 +25,6 @@ $('document').ready(function() {
     })
 
     $('#btnsave').click(function (event) { 
-        event.preventDefault()
-
         let output = document.getElementById('output').innerHTML
         var file = new Blob([output], {type: "text/plain"});
         save.href = URL.createObjectURL(file);
